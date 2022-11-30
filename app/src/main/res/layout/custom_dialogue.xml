@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/custom_dialog_bg"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/heading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_a_geofence"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:padding="7dp"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/geofence_name"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="5dp"
+        android:padding="5dp"/>
+
+    <EditText
+        android:id="@+id/et_GeofenceName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:padding="10dp"
+        android:layout_marginStart="5dp"
+        android:inputType="text"
+        android:importantForAutofill="no"
+        tools:ignore="LabelFor" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/area"
+            android:padding="5dp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/tv_area"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/_350_m"
+            android:textSize="20sp"
+            android:textColor="@color/teal_700"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:layout_marginEnd="5dp"/>
+
+
+    </LinearLayout>
+
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/area_slider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:valueFrom="150"
+        android:valueTo="1000"
+        android:stepSize="50"
+        android:value="350"
+        app:thumbRadius="7dp"
+        android:layout_marginStart="5dp"
+        app:tickVisible="false" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/location"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="5dp"
+        android:padding="5dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_latitude"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:inputType="numberDecimal"
+            android:textAlignment="center"
+            android:hint="@string/latitude"
+            android:importantForAutofill="no" />
+
+        <EditText
+            android:id="@+id/et_longitude"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:inputType="numberDecimal"
+            android:textAlignment="center"
+            android:hint="@string/longitude"
+            android:importantForAutofill="no" />
+
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add"
+        android:textAllCaps="false"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp" />
+
+
+
+</LinearLayout>
+
+
