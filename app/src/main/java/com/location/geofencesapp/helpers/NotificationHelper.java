@@ -1,6 +1,7 @@
 package com.location.geofencesapp.helpers;
 
 
+import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -21,8 +22,6 @@ import java.util.Random;
 
 public class NotificationHelper extends ContextWrapper {
 
-    private static final String TAG = "NotificationHelper";
-
     public NotificationHelper(Context base) {
         super(base);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -31,7 +30,7 @@ public class NotificationHelper extends ContextWrapper {
     }
 
     private final String CHANNEL_NAME = "High priority channel";
-    private final String CHANNEL_ID = "com.example.notifications" + CHANNEL_NAME;
+    private final String CHANNEL_ID = "com.location.geofencesapp" + CHANNEL_NAME;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void createChannels() {
@@ -45,10 +44,17 @@ public class NotificationHelper extends ContextWrapper {
         manager.createNotificationChannel(notificationChannel);
     }
 
+    @SuppressLint("UnspecifiedImmutableFlag")
     public void sendHighPriorityNotification(String title, String body, Class activityName) {
 
         Intent intent = new Intent(this, activityName);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 267, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent;
+        if (Build.VERSION.SDK_INT >= 29) {
+            pendingIntent = PendingIntent.getActivity(this, 267, intent, PendingIntent.FLAG_IMMUTABLE);
+        } else {
+            pendingIntent = PendingIntent.getActivity(this, 267, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        }
 
 
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)

@@ -47,9 +47,10 @@ public class GeofenceHelper extends ContextWrapper {
             return pendingIntent;
 
         Intent intent = new Intent(this, GeofenceReceiver.class);
-        if (Build.VERSION.SDK_INT >=29)
+
+        if (Build.VERSION.SDK_INT >= 29) {
             pendingIntent = PendingIntent.getBroadcast(this,432,intent,PendingIntent.FLAG_IMMUTABLE);
-        else
+        }else
             pendingIntent = PendingIntent.getBroadcast(this,432,intent,PendingIntent.FLAG_UPDATE_CURRENT);
 
         return pendingIntent;
